@@ -1,0 +1,14 @@
+#include "minHeap.h"
+#include <iostream>
+
+  deleteMin();
+  heapify();
+  insert();
+
+  freq* min1;
+  freq* min2;
+  struct freq{
+    char letter;          //if it is a connecting node then make the letter '!'
+    frequency f;
+    freq* child;
+  }

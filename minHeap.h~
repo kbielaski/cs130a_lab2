@@ -1,0 +1,26 @@
+#ifndef MINHEAP_H
+#define MINHEAP_H
+
+class minHeap{
+
+ public:
+  minHeap();
+  void deleteMin();
+  void heapify();
+  void insert();
+  void connect();
+
+ private:
+  freq* min1;
+  freq* min2;
+  struct freq{
+    char letter;          //if it is a connecting node then make the letter '!'
+    frequency f;
+    freq* parent;
+    freq* lchild;
+    freq* rchild;
+  };
+  freq** heap;
+};
+
+#endif

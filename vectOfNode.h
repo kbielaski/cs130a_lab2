@@ -3,7 +3,6 @@
 
 #include "Node.h"
 #include <vector>
-//using namespace std;
 
 class vectOfNode{
  public:
@@ -15,7 +14,7 @@ class vectOfNode{
   void setNode(char letter, int frequency);
  private:
   std::vector<Node> hoffSeg;
-  
+  int nextEmpty;  
 
 };
 

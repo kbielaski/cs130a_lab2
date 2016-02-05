@@ -25,3 +25,7 @@ int Node::getFrequency(){
 void Node::setFrequency(int frequency){
   this->frequency=frequency;
 }
+
+void Node::setLetter(char letter){
+  this->letter=letter;
+}

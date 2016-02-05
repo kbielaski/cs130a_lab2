@@ -4,8 +4,7 @@
 #include <vector>
 
 vectOfNode::vectOfNode(){
-
-  
+  nextEmpty=0;  
 }
 vectOfNode::~vectOfNode(){
 

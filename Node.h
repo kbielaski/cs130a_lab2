@@ -9,7 +9,8 @@ class Node{
   char getLetter();
   int getFrequency();
   void setFrequency(int frequency);
-
+  void setLetter(int letter);
+  
  private:
   char letter;          //if it is a connecting node then make the letter '!'
   int frequency;

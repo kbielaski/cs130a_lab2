@@ -7,10 +7,10 @@
 countFreq::countFreq(){
   //for every letter, set that to 0
   for(int i=97; i<123; i++)
-    table.insert(std::pair<char, int>(i,0));
+    table[i]=0;
 
   //insert a spot for '.', ' ', '\n'
-  table.insert(std::pair<char, int>(46, 0));
+  table.insert(std::pa
   table.insert(std::pair<char, int>(32, 0));
   table.insert(std::pair<char, int>(10, 0));
 }
@@ -30,7 +30,7 @@ void countFreq::addLetters(std::string file){
 	break;
       }
     else
-      {            // i think the error is somewhere in here, it becomes an infinite loop
+      {            // i think the error is somewhere in here
 	std::map<char, int>::iterator p;
 	p=table.find(x);
 	std::cout<< p->second<<std::endl;

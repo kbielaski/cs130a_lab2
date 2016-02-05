@@ -6,13 +6,13 @@
 
 countFreq::countFreq(){
   //for every letter, set that to 0
-  for(int i=97; i<123; i++)
-    table.insert(std::pair<char, int>(i,0));
+  for(int i=97; i<=123; i++)
+    table[i]=0;
 
   //insert a spot for '.', ' ', '\n'
-  table.insert(std::pair<char, int>(46, 0));
-  table.insert(std::pair<char, int>(32, 0));
-  table.insert(std::pair<char, int>(10, 0));
+  table[46]=0;
+  table[32]=0;
+  table[10]=0;
 }
 
 countFreq::~countFreq(){
@@ -25,32 +25,26 @@ void countFreq::addLetters(std::string file){
   char x;
   std::cin >>x;
   while(true){
+    std::cout<<x<<std::endl;
     if(std::cin.eof())
       {
 	break;
       }
     else
       {            // i think the error is somewhere in here
-	std::map<char, int>::iterator p;
-	p=table.find(x);
-	std::cout<< p->second<<std::endl;
-	if(p!=table.end())
-	  p->second++;
+	table[x]++;
       }
   }
 }
 
 void countFreq::printMap(){
   std::map<char, int>::iterator it;
-  for(it=table.begin(); it!=table.end(); it++){
-    if(it->first!=0)
-      std::cout<<it->first<<": "<<it->second<<std::endl;
+  for(int i = 97; i<=123; i++) {
+    if(table[i]!=0)
+      std::cout<<i<<": "<<table[i]<<std::endl;
   }
 }
 
 int countFreq::getValue(char c){
-  std::map<char, int>::iterator p;
-  p=table.find(c);
-  if(p!=table.end())
-    return p->second;
+  return table[c];
 }

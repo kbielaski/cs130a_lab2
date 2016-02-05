@@ -1,7 +1,7 @@
 #ifndef MINHEAP_H
 #define MINHEAP_H
 
-#include "Node.h"
+#include "arrOfNode.h"
 
 class minHeap{
 
@@ -15,8 +15,7 @@ class minHeap{
  private:
   Node* min1;
   Node* min2;
-
-  Node** heap;
+  Node*** heap;         //three stars because it is a pointer to the root of a min heap which is implemented as an array and each element in the array is an array of smaller frequency nodes
 };
 
 #endif

@@ -3,19 +3,20 @@
 
 class Node{
  public:
-  void getParent();
-  void getlchild();
-  void getrchild();
+  Node();
+  Node(int frequency);
+  Node(char letter, int frequency);
   char getLetter();
   int getFrequency();
-  void setFrequency();
+  void setFrequency(int frequency);
 
  private:
   char letter;          //if it is a connecting node then make the letter '!'
-  int f;
-  freq* parent;
-  freq* lchild;
-  freq* rchild;
+  int frequency;
+  
+  //freq* parent;       //I think we should implement this with an array also so that we don't need the pointers
+  //freq* lchild;
+  //freq* rchild;
 };
 
 #endif

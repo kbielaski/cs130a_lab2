@@ -1,0 +1,19 @@
+#ifndef ARROFNODE_H
+#define ARROFNODE_H
+
+#include "Node.h"
+
+class arrOfNode{
+ public:
+  arrOfNode();
+  void getParent();
+  void getlchild();
+  void getrchild();
+  char getLetter();
+ private:
+  Node* hoffSeg
+  
+
+};
+
+#endif

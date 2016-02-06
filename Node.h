@@ -1,6 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <string>
+
 class Node{
  public:
   Node();
@@ -10,14 +12,23 @@ class Node{
   int getFrequency();
   void setFrequency(int frequency);
   void setLetter(int letter);
+  Node * getLchild();
+  Node * getRchild();
+  Node * getParent();
+  void setLchild(Node * lchild);
+  void setRchild(Node * rchild);
+  void setParent(Node * parent);
+  void setCode(std::string code);
+  std::string getCode();
   
  private:
   char letter;          //if it is a connecting node then make the letter '!'
   int frequency;
+  std::string code;
   
-  //freq* parent;       //I think we should implement this with an array also so that we don't need the pointers
-  //freq* lchild;
-  //freq* rchild;
+  Node* parent;       //I think we should implement this with an array also so that we don't need the pointers
+  Node* lchild;
+  Node* rchild;
 };
 
 #endif

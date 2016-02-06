@@ -27,11 +27,11 @@ void countFreq::addLetters(std::string file){
     std::cin>>x;
     if(std::cin.eof())
       {
-	break;
+	       break;
       }
     else
       {            // i think the error is somewhere in here
-	table[x]++;
+	       table[x]++;
       }
   }
 }

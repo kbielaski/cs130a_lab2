@@ -1,4 +1,5 @@
 #include "countFreq.h"
+#include "Node.h"
 #include <iostream>
 #include <cstdio>
 #include <map>
@@ -35,6 +36,8 @@ void countFreq::addLetters(std::string file){
       }
   }
 }
+
+
 
 void countFreq::printMap(){
   for(char i = 97; i<=123; i++) {

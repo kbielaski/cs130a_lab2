@@ -46,7 +46,7 @@ void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
   countFreq freqTable=new freqTable();
   Node zero=new Node('?', -100)
-    freqTable.emplace_back(zero);
+    heap.emplace_back(zero);
   freqTable.addLetters(file);
   for(char i=97; i<=123; i++){
     if(freqTable.getValue(i)!=0){      
@@ -65,7 +65,7 @@ void minHeap::heapify(std::string file){
     Node p=new Node(10, freqTable.getValue(10));
     heap.emplace_back('\n');}
     
-  maintainInvariant(i);
+  maintainInvariant();
     
 
 }

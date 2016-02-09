@@ -9,6 +9,9 @@ minHeap::minHeap(){
 
 
 }
+Node* getMin(){
+
+}
 void minHeap::deleteMin(){
 
 }
@@ -39,6 +42,12 @@ void minHeap::heapify(std::string file){
 void minHeap::insert(){
 
 }
-void minHeap::connect(){
-
+Node minHeap::connect(Node* min1, Node* min2) {
+	int newFreq = min1->getFrequency() + min2->getFrequency();
+	Node * newParent = new Node(newFreq);
+	newParent->setLchild(min1);
+	newParent->setRchild(min2);
+	min1->setParent(newParent);
+	min2->setParent(newParent);
+	return newParent;
 }

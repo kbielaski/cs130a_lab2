@@ -11,7 +11,7 @@ class Node{
   char getLetter();
   int getFrequency();
   void setFrequency(int frequency);
-  void setLetter(int letter);
+  void setLetter(char letter);
   Node * getLchild();
   Node * getRchild();
   Node * getParent();

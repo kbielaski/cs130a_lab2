@@ -17,25 +17,25 @@ void minHeap::deleteMin(){
 }
 void minHeap::maintainInvariant(int index, countFreq freqTable){
   p=index;
-  while(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()||
-	freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){                 //when the children are less than the parent then swap them 
-    if(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()&&                    //when both children are less than the parent, compare them
-       freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){
-      if(freqTable[p*2].getFrequency()<freqTable[p*2+1].getFrequency()){
-	swap(freqTable[p*2], freqTable[p]);
+  while(freqTable[p*2]->getFrequency()<freqTable[p]->getFrequency()||
+	freqTable[p*2+1]->getFrequency()<freqTable[p]->getFrequency()){                 //when the children are less than the parent then swap them 
+    if(freqTable[p*2]->getFrequency()<freqTable[p]->getFrequency()&&                    //when both children are less than the parent, compare them
+       freqTable[p*2+1]->getFrequency()<freqTable[p]->getFrequency()){
+      if(freqTable[p*2]->getFrequency()<freqTable[p*2+1]->getFrequency()){
+	freqTable[p*2]->swap(freqTable[p]);
 	p=p*2;
       }
       else{
-	swap(freqTable[p*2+1],freqTable[p]);
+	freqTable[p*2+1]->swap[freqTable[p]);
 	p=p*2+1;
       }
     }
-    if(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()){
-      swap(freqTable[p*2], freqTable[p]);
+    if(freqTable[p*2]->getFrequency()<freqTable[p]->getFrequency()){
+      freqTable[p*2]->swap(freqTable[p]);
       p=p*2;
     }
     else {
-      swap(freqTable[p*2+1], freqTable[p]);
+      freqTable[p*2+1]->swap(freqTable[p]);
       p=p*2+1;
     }
  }
@@ -64,8 +64,8 @@ void minHeap::heapify(std::string file){
       heap.emplace_back('\n');}
     //now I need to do the heapifying
 
-    for(int i=freqTable.size(); i>0; i--){
-      p=i/2;
+    for(int i=freqTable.size()/2; i>0; i--){
+      maintainInvariant(i, freqTable);
     }
 
 }
@@ -80,13 +80,6 @@ Node minHeap::connect(Node* min1, Node* min2) {
 	min1->setParent(newParent);
 	min2->setParent(newParent);
 	return newParent;
-}
-
-void setMin1(Node min){
-  min1=min;
-}
-void setMin2(Node min){
-  min2=min;
 }
 
 std::string toString(){

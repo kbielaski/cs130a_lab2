@@ -40,8 +40,28 @@ void minHeap::heapify(std::string file){
     //now I need to do the heapifying
 
     for(int i=freqTable.size(); i>0; i--){
-      p=i/2;
-      while(freqTable[p].getfreq
+      p=i/2;                                                                        //p is the parent
+      while(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()||
+            freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){           //while the children are smaller than the parent, make a swap
+
+	/*	if((freqTable[p*2].getFrequency()<freqTable[p].getFrequency()&&
+            freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){             //if both are true compare the two children
+	     
+	     if(freqTable[p*2].getFrequency()<freqTable[p*2+1].getFrequency())        //if the leftmost child is smaller swap that one
+	       swap(freqTable[p*2], freqTable[p];
+		    else 
+
+		    }*/
+	if(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()){
+	   swap(freqTable[p*2], freqTable[p]);
+	   p=p*2;
+	}
+	else {
+	  swap(freqTable[p*2+1], freqTable[p]);
+	  p=p*2+1;
+	}
+
+      }
     }
 
 }

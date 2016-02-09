@@ -83,5 +83,8 @@ Node minHeap::connect(Node* min1, Node* min2) {
 }
 
 std::string toString(){
-
+  std::string result="";
+  for(int i=0; i<heap.size();i++){
+    result+= "(" + heap[i]->getLetter() +", "+heap[i]->getFrequency()+")";
+  }
 }

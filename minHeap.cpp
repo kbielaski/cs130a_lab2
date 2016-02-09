@@ -22,7 +22,7 @@ Node* getMin(){
 void minHeap::maintainInvariant(){
 
   for(int i=heap.size; i<0;i--){
-    p=i/2;
+    int p=i/2;
     while(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
 	  heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
       if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
@@ -49,7 +49,7 @@ void minHeap::maintainInvariant(){
 
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
-  countFreq freqTable=new freqTable();
+  countFreq freqTable=new countFreq();
   freqTable.addLetters(file);
   Node* zero=new Node('?', -100);
   heap[0]=zero;

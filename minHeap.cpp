@@ -5,6 +5,11 @@
 #include <vector>
 #include <string>
 
+
+minHeap::minHeap() {
+  //heap;
+}
+
 minHeap::minHeap(std::string file) {
 	heapify(file);
 }
@@ -15,13 +20,47 @@ Node* minHeap::getMin(){
 	maintainInvariant();
 	return min; 
 }
+void minHeap::maintainInvariant(){
+
+  for(int i=heap.size; i<0;i--){
+    int p=i/2;
+    while(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
+	  heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
+      if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
+	 heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
+	if(heap[p*2]->getFrequency()<heap[p*2+1]->getFrequency()){
+	    heap[p*2].swap(heap[p]);
+	    p=p*2;
+	  }
+	else{
+	  heap[p*2+1].swap(heap[p]);
+	  p=p*2+1;
+	}
+      }
+      if(heap[p*2]->getFrequency()<heap[p]->getFrequency()){
+	heap[p*2].swap(heap[p]);
+	p=p*2;
+    }
+      else{
+	heap[p*2+1].swap(heap[p]);
+	p=p*2+1;
+      }
+  }
+}
 
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
+<<<<<<< HEAD
   countFreq * freqTable = new countFreq();
   Node* zero= new Node('?',-100);
   heap[0]=zero;
   freqTable->addLetters(file);
+=======
+  countFreq *freqTable=new countFreq();
+  freqTable.addLetters(file);
+  Node* zero=new Node('?', -100);
+  heap[0]=zero;
+>>>>>>> origin/master
     for(char i=97; i<=123; i++){
       if(freqTable->getValue(i)!=0){      
 	     Node * p=new Node(i, freqTable->getValue(i));
@@ -40,14 +79,15 @@ void minHeap::heapify(std::string file){
       Node * p=new Node(10, freqTable->getValue(10));
       heap.push_back(p);}
     //now I need to do the heapifying
-
-
 }
+
+
 void minHeap::insert(Node * toInsert){
 	heap.push_back(toInsert);
 	maintainInvariant();
 }
 
+<<<<<<< HEAD
 void minHeap::maintainInvariant() {
   for(int i=heap.size(); i<0;i--){
     int p=i/2;
@@ -93,6 +133,13 @@ void minHeap::toString(){
   }
   std::cout << result << std::endl;
 }
+=======
+std::string toString(){
+  std::string result="";
+  for(int i=0; i<heap.size();i++){
+    result+= "(" + heap[i]->getLetter() +", "+heap[i]->getFrequency()+")";
+  }
+>>>>>>> origin/master
 
 Node * minHeap::connect(Node* min1, Node* min2) {
 	int newFreq = min1->getFrequency() + min2->getFrequency();

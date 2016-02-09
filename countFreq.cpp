@@ -16,11 +16,6 @@ countFreq::countFreq(){
   table[10]=0;
 }
 
-countFreq::~countFreq(){
-
-}
-
-
 void countFreq::addLetters(std::string file){
   freopen(file.c_str(),"r",stdin);    //read in file
   char x;

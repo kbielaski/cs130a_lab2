@@ -5,16 +5,22 @@
 #include <vector>
 #include <string>
 
-minHeap::minHeap(){
+minHeap::minHeap() {
+	heap = new vector<Node*>;
+}
 
-
+minHeap::minHeap(std::string file) {
+	heap = new std::vector<Node*>;
+	heapify(file);
 }
 Node* getMin(){
-
+	Node * min = heap.get(1);
+	heap.at(1) = heap.back();
+	heap.pop_back();
+	maintainInvariant();
+	return min;
 }
-void minHeap::deleteMin(){
 
-}
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
   countFreq freqTable=new freqTable();
@@ -39,9 +45,15 @@ void minHeap::heapify(std::string file){
 
 
 }
-void minHeap::insert(){
+void minHeap::insert(Node * toInsert){
+	heap.push_back(toInsert);
+	maintainInvariant();
+}
+
+void minHeap::maintainInvariant() {
 
 }
+
 Node minHeap::connect(Node* min1, Node* min2) {
 	int newFreq = min1->getFrequency() + min2->getFrequency();
 	Node * newParent = new Node(newFreq);

@@ -15,6 +15,31 @@ Node getMin(){
 void minHeap::deleteMin(){
 
 }
+void minHeap::maintainInvariant(int index, countFreq freqTable){
+  p=index;
+  while(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()||
+	freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){                 //when the children are less than the parent then swap them 
+    if(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()&&                    //when both children are less than the parent, compare them
+       freqTable[p*2+1].getFrequency()<freqTable[p].getFrequency()){
+      if(freqTable[p*2].getFrequency()<freqTable[p*2+1].getFrequency()){
+	swap(freqTable[p*2], freqTable[p]);
+	p=p*2;
+      }
+      else{
+	swap(freqTable[p*2+1],freqTable[p]);
+	p=p*2+1;
+      }
+    }
+    if(freqTable[p*2].getFrequency()<freqTable[p].getFrequency()){
+      swap(freqTable[p*2], freqTable[p]);
+      p=p*2;
+    }
+    else {
+      swap(freqTable[p*2+1], freqTable[p]);
+      p=p*2+1;
+    }
+ }
+}
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
   countFreq freqTable=new freqTable();
@@ -41,7 +66,6 @@ void minHeap::heapify(std::string file){
 
     for(int i=freqTable.size(); i>0; i--){
       p=i/2;
-      while(freqTable[p].getfreq
     }
 
 }

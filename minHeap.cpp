@@ -18,7 +18,7 @@ Node* getMin(){
 	heap.at(1) = heap.back();
 	heap.pop_back();
 	maintainInvariant();
-	return min;
+	return min; 
 }
 
 void minHeap::heapify(std::string file){

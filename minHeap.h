@@ -18,12 +18,8 @@ class minHeap{
   Node connect(Node * min1, Node * min2); //returns the new parent node of the two mins- but only one node so I think it also doesn't need a *
   Node* run();
   std::string toString();
-  void setMin1();
-  void setMin2();
 
  private:
-  Node* min1;        //are there supposed to be stars here because it is only pointing to one node????
-  Node* min2;
   std::vector<Node> heap;
 };
 

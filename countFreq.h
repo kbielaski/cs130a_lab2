@@ -9,16 +9,13 @@ class countFreq{
 
  public:
   countFreq();
-  ~countFreq();
   void addLetters(std::string file);
   void printMap();
   int getValue(char c);
-  std::vector<Node> getVectOfNode();
 
 
  private:
   std::map<char,int> table;
-  std::vector<Node> heap;
 };
 
 #endif

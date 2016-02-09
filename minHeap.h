@@ -9,18 +9,16 @@ class minHeap{
 
  public:
   minHeap();
-  minHeap(std::map toInsert);
-  Node getMin();
-  void deleteMin();
-  void maintainInvariant();
+  minHeap(std::string file);
+  Node * getMin();
   void heapify(std::string file);
+  void maintainInvariant();
   void insert();
-  Node connect(Node * min1, Node * min2); //returns the new parent node of the two mins- but only one node so I think it also doesn't need a *
+  Node * connect(Node * min1, Node * min2); //returns the new parent node of the two mins- but only one node so I think it also doesn't need a *
   Node* run();
-  std::string toString();
 
  private:
-  std::vector<Node> heap;
+  std::vector<Node*> heap;
 };
 
 #endif

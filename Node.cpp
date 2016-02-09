@@ -7,18 +7,27 @@ Node::Node(){
   this->letter='!';
   this->frequency=0;
   this->code = "";
+  this->parent = NULL;
+  this->lchild = NULL;
+  this->rchild = NULL;
 }
 
 Node::Node(int frequency){
   this->letter='!';
   this->frequency=frequency;
   this->code = "";
+  this->parent = NULL;
+  this->lchild = NULL;
+  this->rchild = NULL;
 }
 
 Node::Node(char letter, int frequency){
   this->letter=letter;
   this->frequency=frequency;
   this->code = "";
+  this->parent = NULL;
+  this->lchild = NULL;
+  this->rchild = NULL;
 }
 char Node::getLetter(){
   return letter;

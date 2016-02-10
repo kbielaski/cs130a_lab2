@@ -1,7 +1,6 @@
 #include "countFreq.h"
 #include "minHeap.h"
 #include "Node.h"
-#include "vectOfNode.h"
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -15,6 +14,9 @@ int main(){
 
   std::cout<<"\n\n"<<std::endl;
 
-  minHeap heap;
+  minHeap heap("plain_input.txt");
+  heap.toString();
+
+
 }
 

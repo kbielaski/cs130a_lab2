@@ -6,14 +6,18 @@
 #include <string>
 
 countFreq::countFreq(){
+  int j=0;
   //for every letter, set that to 0
-  for(char i=97; i<=123; i++)
-    table[i]=0;
-
+  for(char i=97; i<=123; i++){
+    Node* input= new Node(i, 0);
+    arrOfFreq[j]=input;
+    j++;
+  }
   //insert a spot for '.', ' ', '\n'
-  table[46]=0;
-  table[32]=0;
-  table[10]=0;
+  //46, 32, 10
+  arrOfFreq[26]=new Node(46, 0);
+  arrOfFreq[27]=new Node(32, 0);
+  arrOfFreq[28]=new Node(10, 0);
 }
 
 void countFreq::addLetters(std::string file){
@@ -26,21 +30,39 @@ void countFreq::addLetters(std::string file){
 	break;
       }
     else
-      {            // i think the error is somewhere in here
-	table[x]++;
+      {           
+	if(x==46) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
+        if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
+        if(x==10) arrOfFreq[28]->setFrequency((arrOfFreq[28]->getFrequency())+1);
+	else{
+	  x=x-97;
+	  arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
+	}
+
       }
   }
 }
 
 
 
-void countFreq::printMap(){
-  for(char i = 97; i<=123; i++) {
-    if(table[i]!=0)
-      std::cout<<i<<": "<<table[i]<<std::endl;
+void countFreq::print(){
+  for(int i = 0; i<=28; i++) {
+    if(arrOfFreq[i]->getFrequency()!=0)
+      std::cout<<arrOfFreq[i]->getLetter()<<": "<<arrOfFreq[i]->getFrequency()<<std::endl;
   }
 }
 
 int countFreq::getValue(char c){
-  return table[c];
+  int value;
+  if(c==46) value=arrOfFreq[26]->getFrequency();
+  if(c==32) value=arrOfFreq[27]->getFrequency();
+  if(c==10) value=arrOfFreq[28]->getFrequency();
+  else{
+    c=c-97;
+    value= arrOfFreq[c]->getFrequency();
+  }
+}
+
+Node** countFreq::getArray(){
+  return arrOfFreq;
 }

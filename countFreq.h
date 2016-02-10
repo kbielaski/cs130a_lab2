@@ -10,12 +10,13 @@ class countFreq{
  public:
   countFreq();
   void addLetters(std::string file);
-  void printMap();
+  void print();
   int getValue(char c);
+  Node** getArray();
 
 
  private:
-  std::map<char,int> table;
+  Node* arrOfFreq[29];
 };
 
 #endif

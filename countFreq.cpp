@@ -7,15 +7,13 @@
 #include <vector>
 
 countFreq::countFreq(){
-  int j=0;
   //for every letter, set that to 0
-  for(char i=97; i<=123; i++){
+  for(char i=97; i<123; i++){
     Node* input= new Node(i, 0);
-    arrOfFreq[j]=input;
-    j++;
+    arrOfFreq[i-97]=input;
   }
   //insert a spot for ' '
-  arrOfFreq[27]=new Node(32, 0);
+  arrOfFreq[26]=new Node(32, 0);
 
 }
 
@@ -28,7 +26,7 @@ void countFreq::addLetters(std::string file){
       {
 	break;
       }
-    if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
+    if(x==32) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
     else{
       x=x-97;
       arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
@@ -39,13 +37,14 @@ void countFreq::addLetters(std::string file){
 
 
 void countFreq::print(){
-  for(int i = 0; i<=28; i++) {
-    if(arrOfFreq[i]->getFrequency()!=0)
+  for(int i = 0; i<27; i++) {
+    if(arrOfFreq[i]->getFrequency()!=0){
       std::cout<<arrOfFreq[i]->getLetter()<<": "<<arrOfFreq[i]->getFrequency()<<std::endl;
+    }
   }
 }
 
-int countFreq::getValue(int c){
+int countFreq::getValueAt(int c){
   return arrOfFreq[c]->getFrequency();
 }
 

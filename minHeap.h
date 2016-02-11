@@ -1,6 +1,5 @@
 #ifndef MINHEAP_H
 #define MINHEAP_H
-#include <vector>
 
 #include "Node.h"
 
@@ -20,7 +19,8 @@ class minHeap{
   void swapNodes(int i,int j);
   void toString();
  private:
-  std::vector<Node*> heap;
+  int amount;
+  Node* heap[28];
 };
 
 #endif

@@ -13,11 +13,9 @@ countFreq::countFreq(){
     arrOfFreq[j]=input;
     j++;
   }
-  //insert a spot for '.', ' ', '\n'
-  //46, 32, 10
-  arrOfFreq[26]=new Node(46, 0);
+  //insert a spot for ' '
   arrOfFreq[27]=new Node(32, 0);
-  arrOfFreq[28]=new Node(10, 0);
+
 }
 
 void countFreq::addLetters(std::string file){
@@ -31,9 +29,7 @@ void countFreq::addLetters(std::string file){
       }
     else
       {           
-	if(x==46) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
         if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
-        if(x==10) arrOfFreq[28]->setFrequency((arrOfFreq[28]->getFrequency())+1);
 	else{
 	  x=x-97;
 	  arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
@@ -54,15 +50,13 @@ void countFreq::print(){
 
 int countFreq::getValue(char c){
   int value;
-  if(c==46) value=arrOfFreq[26]->getFrequency();
   if(c==32) value=arrOfFreq[27]->getFrequency();
-  if(c==10) value=arrOfFreq[28]->getFrequency();
   else{
     c=c-97;
     value= arrOfFreq[c]->getFrequency();
   }
 }
 
-Node** countFreq::getArray(){
-  return arrOfFreq;
+Node* countFreq::getNode(int index){
+  return arrOfFreq[index];
 }

@@ -7,7 +7,6 @@ Node::Node(){
   this->letter='!';
   this->frequency=0;
   this->code = "";
-  this->parent = NULL;
   this->lchild = NULL;
   this->rchild = NULL;
 }
@@ -16,7 +15,6 @@ Node::Node(int frequency){
   this->letter='!';
   this->frequency=frequency;
   this->code = "";
-  this->parent = NULL;
   this->lchild = NULL;
   this->rchild = NULL;
 }
@@ -25,7 +23,6 @@ Node::Node(char letter, int frequency){
   this->letter=letter;
   this->frequency=frequency;
   this->code = "";
-  this->parent = NULL;
   this->lchild = NULL;
   this->rchild = NULL;
 }
@@ -51,10 +48,6 @@ Node * Node::getRchild() {
   return rchild;
 }
 
-Node * Node::getParent() {
-  return parent;
-}
-
 void Node::setLchild(Node * lchild) {
   this->lchild = lchild;
 }
@@ -63,14 +56,14 @@ void Node::setRchild(Node * rchild) {
   this->rchild = rchild;
 }
 
-void Node::setParent(Node * parent) {
-  this->parent = parent;
-}
-
 void Node::setCode(std::string code) {
   this->code = code;
 }
 
 std::string Node::getCode() {
   return code;
+}
+
+void Node::addToCode(std::string s) {
+  code = s + code;
 }

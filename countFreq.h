@@ -16,7 +16,7 @@ class countFreq{
 
 
  private:
-  Node* arrOfFreq[29];
+  Node* arrOfFreq[28];
 };
 
 #endif

@@ -17,6 +17,7 @@ Node* minHeap::getMin(){
 }
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
+  amount = 0;
   countFreq * freqTable = new countFreq();
   freqTable->addLetters(file);
   Node* zero= new Node('?',-100);
@@ -121,13 +122,32 @@ void minHeap::toString(){
 Node * minHeap::connect(Node* min1, Node* min2) {
   int newFreq = min1->getFrequency() + min2->getFrequency();
   Node * newParent = new Node(newFreq);
-  newParent->setLchild(min1);
-  newParent->setRchild(min2);
-  min1->setParent(newParent);
-  min2->setParent(newParent);
+  newParent->setLchild(min2);
+  encode(min2, "1");
+  newParent->setRchild(min1);
+  encode(min1, "0");
   return newParent;
 }
 
-void minHeap::maintainInvariant(){
+void minHeap::encode(Node * n, std::string toAdd) {
+  if (n->lchild == NULL) {
+    return;
+  }
+  if (n->getLetter != '!') {
+    n->addToCode(toAdd);
+  }
+  encode(n->getLchild(), toAdd);
+  encode(n->getRchild(), toAdd);
+}
 
+Node * minHeap::findInTrie(char letter, Node * root) {
+  if(root->getLchild() == NULL) {
+    return;
+  }
+  if (root->getLetter() == letter) {
+    return root;
+  }
+  else {
+    findInTrie(letter, root->getLchild());
+    findInTrie(letter, root->getRchild());
 }

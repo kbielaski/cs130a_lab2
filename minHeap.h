@@ -17,6 +17,8 @@ class minHeap{
   Node* run();
   void maintainInvariant();
   void swapNodes(int i,int j);
+  void encode(Node * n, std::string toAdd);
+  Node * findInTrie(char letter);
   void toString();
  private:
   int amount;

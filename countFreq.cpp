@@ -23,19 +23,17 @@ void countFreq::addLetters(std::string file){
   char x;
   while(true){
     std::cin>>x;
-    if(std::cin.eof())
-      {
-	break;
+    if(std::cin.eof()){
+      break;
+    }
+    else {           
+      if(x==32) 
+        arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
+      else{
+        x=x-97;
+        arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
       }
-    else
-      {           
-        if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
-	else{
-	  x=x-97;
-	  arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
-	}
-
-      }
+    }
   }
 }
 

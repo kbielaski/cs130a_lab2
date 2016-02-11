@@ -20,13 +20,12 @@ class Node{
   void setParent(Node * parent);
   void setCode(std::string code);
   std::string getCode();
+  void addToCode(std::string s);
   
  private:
   char letter;          //if it is a connecting node then make the letter '!'
   int frequency;
   std::string code;
-  
-  Node* parent;       //I think we should implement this with an array also so that we don't need the pointers
   Node* lchild;
   Node* rchild;
 };

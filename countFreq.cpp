@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <map>
 #include <string>
+#include <vector>
 
 countFreq::countFreq(){
   int j=0;
@@ -27,15 +28,11 @@ void countFreq::addLetters(std::string file){
       {
 	break;
       }
-    else
-      {           
-        if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
-	else{
-	  x=x-97;
-	  arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
-	}
-
-      }
+    if(x==32) arrOfFreq[27]->setFrequency((arrOfFreq[27]->getFrequency())+1);
+    else{
+      x=x-97;
+      arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
+    }
   }
 }
 
@@ -48,13 +45,8 @@ void countFreq::print(){
   }
 }
 
-int countFreq::getValue(char c){
-  int value;
-  if(c==32) value=arrOfFreq[27]->getFrequency();
-  else{
-    c=c-97;
-    value= arrOfFreq[c]->getFrequency();
-  }
+int countFreq::getValue(int c){
+  return arrOfFreq[c]->getFrequency();
 }
 
 Node* countFreq::getNode(int index){

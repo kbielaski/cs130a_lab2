@@ -3,48 +3,45 @@
 #include "countFreq.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 minHeap::minHeap(std::string file) {
-  amount=0;
+
   heapify(file);
 }
 Node* minHeap::getMin(){
-  Node * min = heap[1];
-  //heap[1] = heap.back();
-  //heap.pop_back();
+  Node * min = heap.at(1);
+  heap.at(1) = heap.back();
+  heap.pop_back();
   maintainInvariant();
   return min; 
 }
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
-  amount = 0;
   countFreq * freqTable = new countFreq();
+  countFreq* freqTable;
   freqTable->addLetters(file);
+  //freqTable->print();
   Node* zero= new Node('?',-100);
-  heap[0]=zero;
-  amount++;
-  int nextSpot=1;
+  heap.push_back(zero);
   for(int i=0; i<28; i++){
-    std::cout<<"gets here"<<std::endl;
-    if(freqTable->getValue(i+97)!=0||freqTable->getValue(32)!=0){
-      heap[nextSpot]=freqTable->getNode(i);
-      nextSpot++;
-      amount++;
+    if(freqTable->getValue(i)!=0){
+      heap.push_back(freqTable->getNode(i));
     }
   }
   //now I need to do the heapifying
-  for(int i=(amount-1)/2; i<0;i--)
+  for(int i=heap.size()/2;i<0;i--)
     percolateDown(i);
 }
 
 
 void minHeap::insert(Node * toInsert){
-  //heap.push_back(toInsert);
+  heap.push_back(toInsert);
   maintainInvariant();
 }
 //i think that my problem is that I am comparing places in the vector that don't contain anything
 void minHeap::percolateUp(){
-  for(int p=(amount-1)/2; p<0;p=p/2){
+  for(int p=heap.size()/2; p<0;p=p/2){
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
 	  heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
       if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
@@ -71,7 +68,7 @@ void minHeap::percolateUp(){
 
 
 void minHeap::percolateDown(int index) {
-  for(int p=index; p<(amount-1);){
+  for(int p=index; p<heap.size();){
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
           heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
       if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
@@ -110,7 +107,7 @@ void minHeap::swapNodes(int i, int j){
 
 void minHeap::toString(){
   std::string result="";
-  for(int i=0; i<(amount-1);i++){
+  for(int i=0; i<heap.size();i++){
     result+="(";
     result+=heap[i]->getLetter();
     result+=",";

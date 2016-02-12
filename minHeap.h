@@ -2,6 +2,7 @@
 #define MINHEAP_H
 
 #include "Node.h"
+#include <vector>
 
 using namespace std;
 class minHeap{
@@ -21,8 +22,7 @@ class minHeap{
   Node * findInTrie(char letter);
   void toString();
  private:
-  int amount;
-  Node* heap[28];
+  std::vector<Node*> heap;
 };
 
 #endif

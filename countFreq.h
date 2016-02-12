@@ -4,6 +4,7 @@
 #include "Node.h"
 #include <map>
 #include <string>
+#include <vector>
 
 class countFreq{
 
@@ -11,7 +12,7 @@ class countFreq{
   countFreq();
   void addLetters(std::string file);
   void print();
-  int getValue(char c);
+  int getValue(int c);
   Node* getNode(int index);
 
 

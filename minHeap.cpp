@@ -37,8 +37,8 @@ void minHeap::heapify(std::string file){
     }
   }
   //now I need to do the heapifying
-  for(int i=heap.size()/2;i<0;i--)
-    percolateDown(i);
+  for(int i=heap.size()/2;i>0;i--){
+    percolateDown(i);}
 }
 
 
@@ -75,6 +75,7 @@ void minHeap::percolateUp(){
 
 
 void minHeap::percolateDown(int index) {
+  std::cout<<"entered percolate Down"<<std::endl;
   for(int p=index; p<heap.size();){
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
           heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){

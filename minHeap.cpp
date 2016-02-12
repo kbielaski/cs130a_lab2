@@ -77,6 +77,7 @@ void minHeap::percolateUp(){
 void minHeap::percolateDown(int index) {
   std::cout<<"entered percolate Down"<<std::endl;
   for(int p=index; p<heap.size();){
+    std::cout<<index<<std::endl;
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
           heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
       if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
@@ -107,6 +108,7 @@ void minHeap::percolateDown(int index) {
 }
 
 void minHeap::swapNodes(int i, int j){
+  std::cout<<"entered swap nodes"<<std::endl;
   Node* temp=heap[i];
   heap[i]=heap[j];
   heap[j]=temp;

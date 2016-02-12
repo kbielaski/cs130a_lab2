@@ -12,12 +12,12 @@ class countFreq{
   countFreq();
   void addLetters(std::string file);
   void print();
-  int getValue(int c);
+  int getValueAt(int c);
   Node* getNode(int index);
 
 
  private:
-  Node* arrOfFreq[28];
+  Node* arrOfFreq[27];
 };
 
 #endif

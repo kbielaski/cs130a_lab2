@@ -4,6 +4,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdio>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sstream>
 
 minHeap::minHeap(std::string file) {
 
@@ -18,20 +22,23 @@ Node* minHeap::getMin(){
 }
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
-  countFreq * freqTable = new countFreq();
-  countFreq* freqTable;
-  freqTable->addLetters(file);
-  //freqTable->print();
+  countFreq freqTable;
+  freqTable.addLetters(file);
+  freqTable.print();
   Node* zero= new Node('?',-100);
   heap.push_back(zero);
-  for(int i=0; i<28; i++){
-    if(freqTable->getValue(i)!=0){
-      heap.push_back(freqTable->getNode(i));
+  for(int i=0; i<27; i++){
+    if(freqTable.getValueAt(i)!=0){
+      int frequency = freqTable.getNode(i)->getFrequency();
+      Node* newNode = new Node();
+      newNode->setLetter(freqTable.getNode(i)->getLetter());
+      newNode->setFrequency(frequency);
+      heap.push_back(newNode);
     }
   }
   //now I need to do the heapifying
-  for(int i=heap.size()/2;i<0;i--)
-    percolateDown(i);
+  for(int i=heap.size()/2;i>0;i--){
+    percolateDown(i);}
 }
 
 
@@ -68,6 +75,7 @@ void minHeap::percolateUp(){
 
 
 void minHeap::percolateDown(int index) {
+  std::cout<<"entered percolate Down"<<std::endl;
   for(int p=index; p<heap.size();){
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
           heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
@@ -111,7 +119,11 @@ void minHeap::toString(){
     result+="(";
     result+=heap[i]->getLetter();
     result+=",";
-    result+=heap[i]->getFrequency();
+    int a=heap[i]->getFrequency();
+    stringstream ss;
+    ss<<a;
+    string str =ss.str();
+    result+=str;
     result+=")";
   }
   std::cout << result << std::endl;

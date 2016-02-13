@@ -26,6 +26,22 @@ Node::Node(char letter, int frequency){
   this->lchild = NULL;
   this->rchild = NULL;
 }
+
+Node::Node(char letter, int frequency, std::string code) {
+  this->letter=letter;
+  this->frequency=frequency;
+  this->code = code;
+  this->lchild = NULL;
+  this->rchild = NULL;
+}
+
+void Node::copyNode(Node * n) {
+  this->letter = n->getLetter();
+  this->frequency = n->getFrequency();
+  this->code = n->getCode();
+  this->lchild = n->getLchild();
+  this->rchild = n->getRchild();
+}
 char Node::getLetter(){
   return letter;
 }

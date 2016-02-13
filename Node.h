@@ -8,6 +8,8 @@ class Node{
   Node();
   Node(int frequency);
   Node(char letter, int frequency);
+  Node(char letter, int frequency, std::string code);
+  void copyNode(Node*n);
   char getLetter();
   int getFrequency();
   void setFrequency(int frequency);

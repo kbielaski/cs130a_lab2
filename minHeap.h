@@ -16,8 +16,9 @@ class minHeap{
   void insert(Node * toInsert);
   Node * connect(Node * min1, Node * min2); //returns the new parent node of the two mins- but only one node so I think it also doesn't need a *
   Node* run();
-  void maintainInvariant();
   void swapNodes(int i,int j);
+  void encode(Node * n, std::string toAdd);
+  Node * findInTrie(char letter, Node * root);
   void toString();
  private:
   std::vector<Node*> heap;

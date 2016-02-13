@@ -24,7 +24,7 @@ void countFreq::addLetters(std::string file){
     std::cin>>x;
     if(std::cin.eof())
       {
-	break;
+        break;
       }
     if(x==32) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
     else{

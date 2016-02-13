@@ -37,7 +37,8 @@ void minHeap::heapify(std::string file){
     }
   }
   //now I need to do the heapifying
-  for(int i=heap.size()/2;i>0;i--){
+  for(int i=(heap.size()-1)/2;i>0;i--){
+    std::cout << "before percolatedown\n";
     percolateDown(i);}
 }
 
@@ -85,29 +86,30 @@ void minHeap::percolateUp() {
 }
 
 void minHeap::percolateDown(int index) {
-  while(index <= heap.size()-1) {
-    if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
-        heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
-      if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
-        swapNodes(index, 2*index);
-        index = index*2;
+  while(2*index <= heap.size()-1 || 2*index+1 <=heap.size()-1) {
+    std::cout << heap[index]->getFrequency() << std::endl;
+      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
+          heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
+        if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
       }
-      else {
-        swapNodes(index, 2*index+1);
-        index = 2*index+1;
+      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() || 
+           heap[index]->getFrequency() > heap[2*index+1]->getFrequency()) {
+        if (heap[2*index]->getFrequency() < heap[index]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
       }
-    }
-    if (heap[index]->getFrequency() > heap[2*index]->getFrequency() || 
-         heap[index]->getFrequency() > heap[2*index+1]->getFrequency()) {
-      if (heap[2*index]->getFrequency() < heap[index]->getFrequency()) {
-        swapNodes(index, 2*index);
-        index = index*2;
-      }
-      else {
-        swapNodes(index, 2*index+1);
-        index = 2*index+1;
-      }
-    }
   }
 }
 /*void minHeap::percolateDown(int index) {

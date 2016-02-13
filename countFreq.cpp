@@ -44,8 +44,8 @@ void countFreq::print(){
   }
 }
 
-int countFreq::getValueAt(int c){
-  return arrOfFreq[c]->getFrequency();
+int countFreq::getValueAt(int i){
+  return arrOfFreq[i]->getFrequency();
 }
 
 Node* countFreq::getNode(int index){

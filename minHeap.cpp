@@ -52,8 +52,13 @@ void minHeap::insert(Node * toInsert){
   for(int p=(heap.size()-1)/2; p>0;p=p/2){
     if(heap[p*2]->getFrequency()<heap[p]->getFrequency() || heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
       if(heap[p*2]->getFrequency()<heap[p]->getFrequency() && heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
+<<<<<<< HEAD
       if(heap[p*2]->getFrequency()==heap[p*2+1]->getFrequency()){
         swapNodes(p*2+1,p);
+=======
+	if(heap[p*2]->getFrequency()==heap[p*2+1]->getFrequency()){
+	  swapNodes(p*2+1,p);
+>>>>>>> abe9b31d55abcb8c72b3bb34a5ed7c97c461a6fd
 	}
 	if(heap[p*2]->getFrequency()<heap[p*2+1]->getFrequency()){
 	  swapNodes(p*2,p);
@@ -70,7 +75,11 @@ void minHeap::insert(Node * toInsert){
       }
     }
   }
+<<<<<<< HEAD
   }*/
+=======
+}*/
+>>>>>>> abe9b31d55abcb8c72b3bb34a5ed7c97c461a6fd
 
 void minHeap::percolateUp() {
   int p = heap.size()-1;
@@ -88,6 +97,7 @@ void minHeap::percolateUp() {
 void minHeap::percolateDown(int index) {
   while(2*index <= heap.size()-1 || 2*index+1 <=heap.size()-1) {
     std::cout << heap[index]->getFrequency() << std::endl;
+<<<<<<< HEAD
     if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
 	heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
       if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
@@ -110,6 +120,30 @@ void minHeap::percolateDown(int index) {
 	index = 2*index+1;
       }
     }
+=======
+      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
+          heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
+        if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
+      }
+      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() || 
+           heap[index]->getFrequency() > heap[2*index+1]->getFrequency()) {
+        if (heap[2*index]->getFrequency() < heap[index]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
+      }
+>>>>>>> abe9b31d55abcb8c72b3bb34a5ed7c97c461a6fd
   }
 }
 /*void minHeap::percolateDown(int index) {
@@ -142,7 +176,11 @@ void minHeap::percolateDown(int index) {
       }
     }
   }
+<<<<<<< HEAD
   }*/
+=======
+}*/
+>>>>>>> abe9b31d55abcb8c72b3bb34a5ed7c97c461a6fd
 
 void minHeap::swapNodes(int i, int j){
   Node* temp = new Node();
@@ -199,4 +237,8 @@ Node * minHeap::findInTrie(char letter, Node * root) {
     findInTrie(letter, root->getLchild());
     findInTrie(letter, root->getRchild());
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> abe9b31d55abcb8c72b3bb34a5ed7c97c461a6fd

@@ -12,7 +12,7 @@ class countFreq{
   countFreq();
   void addLetters(std::string file);
   void print();
-  int getValueAt(int c);
+  int getValueAt(int i);
   Node* getNode(int index);
 
 

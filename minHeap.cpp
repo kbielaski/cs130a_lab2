@@ -29,7 +29,7 @@ void minHeap::heapify(std::string file){
   heap.push_back(zero);
   for(int i=0; i<27; i++){
     if(freqTable.getValueAt(i)!=0){
-      int frequency = freqTable.getNode(i)->getFrequency();
+      int frequency = freqTable.getValueAt(i);
       Node* newNode = new Node();
       newNode->setLetter(freqTable.getNode(i)->getLetter());
       newNode->setFrequency(frequency);

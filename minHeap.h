@@ -20,6 +20,7 @@ class minHeap{
   void encode(Node * n, std::string toAdd);
   Node * findInTrie(char letter, Node * root);
   void toString();
+  bool layerabove(int index);
  private:
   std::vector<Node*> heap;
 };

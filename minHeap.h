@@ -21,6 +21,8 @@ class minHeap{
   Node * findInTrie(char letter, Node * root);
   void toString();
   bool layerabove(int index);
+  void makeOne();
+
  private:
   std::vector<Node*> heap;
 };

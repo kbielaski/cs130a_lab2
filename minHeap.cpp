@@ -119,7 +119,10 @@ void minHeap::percolateDown(int index) {
 	}
       }
     }
-
+    //at the end of the while loop, if the parent is less than the children then break
+    if(layerabove(index)){
+      if(heap[index]->getFrequency()<=heap[index*2]->getFrequency()&&heap[index]->getFrequency()<=heap[index*2+1]->getFrequency())
+	break;}
   }
 }
 
@@ -225,4 +228,15 @@ bool minHeap::layerabove(int index){                                 //layer abo
     return true;
   else
     return false;
+}
+
+void minHeap::makeOne(){
+  while(heap.size()>2){
+    Node* minone=getMin();
+    toString();
+    Node* mintwo=getMin();
+    Node* combo=connect(minone, mintwo);
+    insert(combo);
+    toString();
+  }
 }

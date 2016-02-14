@@ -34,5 +34,9 @@ int main(){
   heap.insert(four);
   heap.toString();
 
+  //test makeOne
+  heap.makeOne();
+  heap.toString();
+
 }
 

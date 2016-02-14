@@ -12,9 +12,27 @@ int main(){
   //frequencies.addLetters("plain_input.txt");
   //frequencies.print();
 
+  //tests constructor including heapify, swap, and percolateDown
   minHeap heap("plain_input.txt");
   heap.toString();
 
+  //tests insert and percolateUp
+  Node* one=new Node('z',2);
+  heap.insert(one);
+  heap.toString();
+
+  //tests get min and delete it
+  Node* two;
+  Node* three;
+  two=heap.getMin();
+  three=heap.getMin();
+  heap.toString();
+
+  //tests connecting the two mins and inserting them
+  Node* four;
+  four=heap.connect(two, three);
+  heap.insert(four);
+  heap.toString();
 
 }
 

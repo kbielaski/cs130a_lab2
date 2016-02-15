@@ -208,7 +208,7 @@ void minHeap::encode(Node * n, std::string toAdd) {
   encode(n->getRchild(), toAdd);
 }
 
-Node * minHeap::findInTrie(char letter, Node * root) {
+Node * minHeap::findInTrie(char letter, Node * root, Node * found) {
   std::cout<< root->getLetter()<< " "<<root->getFrequency()<<std::endl;
   if(root->getLetter()!=letter&&(root->getRchild()==NULL||root->getLchild() == NULL)) {
     return NULL;

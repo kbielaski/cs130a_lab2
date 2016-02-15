@@ -8,6 +8,7 @@ class makeMaps{
  public:
   makeMaps();
   void makeEncode(std::string file);
+  //  std::string encode(Node* hoff, char letter);
   void makeDecode();
 
  private:

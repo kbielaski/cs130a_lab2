@@ -17,7 +17,7 @@ makeMaps::makeMaps(){
 void makeMaps::makeEncode(std::string file){
   //call the constructor to make the heap using the file and then call makeOne to make the one segment then call getHoff to get the segment then call encode to make the encoding for each letter
   minHeap* heap=new minHeap(file);           //heapified the letters
-  heap->makeOne;
+  heap->makeOne();
   Node* hoffTree=heap->getHoff();            //I should have the one node that has a bunch of children that I can encode
 
 }

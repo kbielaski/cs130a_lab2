@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
+#include "makeMaps.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(){
   //frequencies.print();
 
   //tests constructor including heapify, swap, and percolateDown
-  minHeap heap("plain_input.txt");
+    minHeap heap("plain_input.txt");
   heap.toString();
 
   //tests insert and percolateUp
@@ -38,5 +39,14 @@ int main(){
   heap.makeOne();
   heap.toString();
 
+  Node* hoff=heap.getHoff();
+  //segfault in findInTrie
+  Node* five= heap.findInTrie('e',hoff); 
+
+  std::cout<<five->getLetter()<<" "<<five->getFrequency()<<std::endl;
+  //test whether makeMaps gets the proper node from the heap
+  /*  makeMaps madeTree;
+  madeTree.makeEncode("plain_input.txt");
+  */
 }
 

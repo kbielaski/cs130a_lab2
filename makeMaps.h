@@ -2,12 +2,13 @@
 #define MAKEMAPS_H
 #include "minHeap.h"
 #include <map>
+#include <string>
 
 class makeMaps{
  public:
   makeMaps();
-  void makeEncode(Node* hoff);
-  void makeDecode(Node* hoff);
+  void makeEncode(std::string file);
+  void makeDecode();
 
  private:
   std::map<char, int> encode;

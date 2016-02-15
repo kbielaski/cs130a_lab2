@@ -209,7 +209,7 @@ void minHeap::encode(Node * n, std::string toAdd) {
 }
 
 Node * minHeap::findInTrie(char letter, Node * root) {
-  if(root->getLchild() == NULL) {
+  if(root->getLetter()!=letter&&(root->getRchild()==NULL||root->getLchild() == NULL)) {
     return NULL;
   }
   if (root->getLetter() == letter) {

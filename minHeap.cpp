@@ -234,10 +234,12 @@ bool minHeap::layerabove(int index){                                 //layer abo
 void minHeap::makeOne(){
   while(heap.size()>2){
     Node* minone=getMin();
-    toString();
     Node* mintwo=getMin();
     Node* combo=connect(minone, mintwo);
     insert(combo);
-    toString();
   }
+}
+
+Node* minHeap::getHoff(){
+  return heap[1];
 }

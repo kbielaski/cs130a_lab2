@@ -22,6 +22,7 @@ class minHeap{
   void toString();
   bool layerabove(int index);
   void makeOne();
+  Node* getHoff();
 
  private:
   std::vector<Node*> heap;

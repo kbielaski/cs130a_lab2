@@ -196,6 +196,7 @@ Node * minHeap::connect(Node* min1, Node* min2) {
   return newParent;
 }
 
+//do we need to add 1's and 0's to toAdd whether it is going left or right?
 void minHeap::encode(Node * n, std::string toAdd) {
   if (n->getLchild() == NULL) {
     return;

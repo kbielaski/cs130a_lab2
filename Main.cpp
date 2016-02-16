@@ -29,7 +29,8 @@ int main(){
   makeMaps mapOfEncs;
   mapOfEncs.makeEncode(decText);
   mapOfEncs.makeDecode();
+
   std::cout<<mapOfEncs.makeEncodedString(decText)<<std::endl;
-  std::cout<<mapOfEncs.makeDecodedString(encText)<<std::endl;
+  std::cout<<mapOfEncs.makeDecodedString(encText))<<std::endl;
 }
 

@@ -37,6 +37,7 @@ void makeMaps::makeEncode(std::string file){
   minHeap* heap=new minHeap(file);           //heapified the letters
   heap->makeOne();
   Node* hoff=heap->getHoff();            //I should have the one node that has a bunch of children that I can encode
+  std::cout << hoff->getFrequency() << std::endl;
   encodeHelper(hoff);
 }
 
@@ -48,8 +49,9 @@ void makeMaps::makeDecode(){          //from encode map
 }
 
 void makeMaps::encodeHelper(Node * root) {
-
+  std::cout<<"entered encodeHelper"<<std::endl;
   while (root->getLchild() != NULL) {
+    std::cout<<root->getLetter()<<" "<<root->getFrequency()<<std::endl;
     encodeHelper(root->getLchild());
   }
   if (root->getLetter() != '!') {
@@ -58,6 +60,7 @@ void makeMaps::encodeHelper(Node * root) {
   while (root->getRchild() != NULL) {
     encodeHelper(root->getRchild());
   }
+  std::cout<<"end of encode Helper"<<std::endl;
 }
 
 std::string makeMaps::makeEncodedString(std::string input){

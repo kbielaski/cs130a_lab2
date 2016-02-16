@@ -10,9 +10,9 @@
 #include <sstream>
 
 minHeap::minHeap(std::string file) {
-
   heapify(file);
 }
+
 Node* minHeap::getMin(){
   Node * min = heap.at(1);
   heap.at(1) = heap.back();
@@ -20,6 +20,7 @@ Node* minHeap::getMin(){
   percolateDown(1);
   return min; 
 }
+
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
   countFreq freqTable;
@@ -46,39 +47,6 @@ void minHeap::insert(Node * toInsert){
   heap.push_back(toInsert);
   percolateUp();
 }
-//i think that my problem is that I am comparing places in the vector that don't contain anything
-/*void minHeap::percolateUp(){
-  for(int p=(heap.size()-1)/2; p>0;p=p/2){
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency() || heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency() && heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
-
-  if(heap[p*2]->getFrequency()==heap[p*2+1]->getFrequency()){
-  swapNodes(p*2+1,p);
-
-  if(heap[p*2]->getFrequency()==heap[p*2+1]->getFrequency()){
-  swapNodes(p*2+1,p);
-
-  }
-  if(heap[p*2]->getFrequency()<heap[p*2+1]->getFrequency()){
-  swapNodes(p*2,p);
-  }
-  else{
-  swapNodes(p*2+1,p);
-  }
-  }
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency()){
-  swapNodes(p*2,p);
-  }
-  else{
-  swapNodes(p*2+1,p);
-  }
-  }
-  }
-
-  }*/
-
-
-
 
 void minHeap::percolateUp() {
   int p = heap.size()-1;
@@ -126,42 +94,6 @@ void minHeap::percolateDown(int index) {
   }
 }
 
-/*void minHeap::percolateDown(int index) {
-  std::cout<<"entered percolate Down"<<std::endl;
-  for(int p=index; p<heap.size();){
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency()||
-  heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency()&&
-  heap[p*2+1]->getFrequency()<heap[p]->getFrequency()){
-  if(heap[p*2]->getFrequency()==heap[p*2+1]->getFrequency()){
-  swapNodes(p*2+1,p);
-  p=p*2+1;
-  }
-  if(heap[p*2]->getFrequency()<heap[p*2+1]->getFrequency()){
-  swapNodes(p*2,p);
-  p=p*2;
-  }
-  else{
-  swapNodes(p*2+1,p);
-  p=p*2+1;
-  }
-  }
-  if(heap[p*2]->getFrequency()<heap[p]->getFrequency()){
-  swapNodes(p*2,p);
-  p=p*2;
-  }
-  else{
-  swapNodes(p*2+1,p);
-  p=p*2+1;
-  }
-  }
-  }
-
-  }*/
-
-
-
-
 void minHeap::swapNodes(int i, int j){
   Node* temp = new Node();
   temp->copyNode(heap[i]);
@@ -186,6 +118,7 @@ void minHeap::toString(){
   }
   std::cout << result << std::endl;
 }
+
 Node * minHeap::connect(Node* min1, Node* min2) {
   int newFreq = min1->getFrequency() + min2->getFrequency();
   Node * newParent = new Node(newFreq);
@@ -206,22 +139,6 @@ void minHeap::encode(Node * n, std::string toAdd) {
   }
   encode(n->getLchild(), toAdd);
   encode(n->getRchild(), toAdd);
-}
-
-Node * minHeap::findInTrie(char letter, Node * root, Node * found) {
-  std::cout<< root->getLetter()<< " "<<root->getFrequency()<<std::endl;
-  if(root->getLetter()!=letter&&(root->getRchild()==NULL||root->getLchild() == NULL)) {
-    return NULL;
-  }
-  if (root->getLetter() == letter) {
-    std::cout<< "found"<<std::endl;
-    return root;
-  }
-  else {
-    findInTrie(letter, root->getLchild());
-    findInTrie(letter, root->getRchild());
-  }
-
 }
 
 bool minHeap::layerabove(int index){                                 //layer above the last points to something still in the heap

@@ -12,7 +12,7 @@ int main(){
   //countFreq frequencies;
   //frequencies.addLetters("plain_input.txt");
   //frequencies.print();
-
+/*
   //tests constructor including heapify, swap, and percolateDown
     minHeap heap("plain_input.txt");
   heap.toString();
@@ -40,13 +40,12 @@ int main(){
   heap.toString();
 
   Node* hoff=heap.getHoff();
-  //segfault in findInTrie
-  Node* five= heap.findInTrie('e',hoff); 
-
-  std::cout<<five->getLetter()<<" "<<five->getFrequency()<<std::endl;
-  //test whether makeMaps gets the proper node from the heap
-  /*  makeMaps madeTree;
-  madeTree.makeEncode("plain_input.txt");
   */
+
+  
+  //test whether makeMaps gets the proper node from the heap
+  makeMaps madeTree;
+  madeTree.makeEncode("plain_input.txt");
+  
 }
 

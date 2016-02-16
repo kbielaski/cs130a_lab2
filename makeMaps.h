@@ -10,10 +10,11 @@ class makeMaps{
   void makeEncode(std::string file);
   //  std::string encode(Node* hoff, char letter);
   void makeDecode();
+  void encodeHelper(Node * root);
 
  private:
-  std::map<char, int> encode;
-  std::map<int, char> decode;
+  std::map<char, std::string> encode;
+  std::map<std::string, char> decode;
 
 };
 #endif

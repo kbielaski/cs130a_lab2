@@ -81,5 +81,5 @@ std::string Node::getCode() {
 }
 
 void Node::addToCode(std::string s) {
-  code = s + code;
+  this->code = s + this->code;
 }

@@ -26,7 +26,6 @@ void minHeap::heapify(std::string file){
   countFreq freqTable;
 
   freqTable.addLetters(file);
-  freqTable.print();
   Node* zero= new Node('?',-100);
   heap.push_back(zero);
   for(int i=0; i<27; i++){
@@ -40,7 +39,8 @@ void minHeap::heapify(std::string file){
   }
   //now I need to do the heapifying
   for(int i=(heap.size()-1)/2;i>0;i--){
-    percolateDown(i);}
+    percolateDown(i);
+  }
 }
 
 
@@ -132,14 +132,15 @@ Node * minHeap::connect(Node* min1, Node* min2) {
 
 //do we need to add 1's and 0's to toAdd whether it is going left or right?
 void minHeap::encode(Node * n, std::string toAdd) {
-  if (n->getLchild() == NULL) {
-    return;
+  if (n->getLchild() != NULL) {
+    encode(n->getLchild(), toAdd);
   }
   if (n->getLetter() != '!') {
     n->addToCode(toAdd);
   }
-  encode(n->getLchild(), toAdd);
-  encode(n->getRchild(), toAdd);
+  if (n->getRchild() != NULL) {
+    encode(n->getRchild(), toAdd);
+  }
 }
 
 bool minHeap::layerabove(int index){                                 //layer above the last points to something still in the heap

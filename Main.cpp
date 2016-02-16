@@ -28,7 +28,6 @@ int main(){
   }
   makeMaps mapOfEncs;
   mapOfEncs.makeEncode(decText);
-  std::cout<<"got here"<<std::endl;
   mapOfEncs.makeDecode();
   std::cout<<mapOfEncs.makeEncodedString(decText)<<std::endl;
   std::cout<<mapOfEncs.makeDecodedString(encText)<<std::endl;

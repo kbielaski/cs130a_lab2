@@ -14,10 +14,11 @@ class countFreq{
   void print();
   int getValueAt(int i);
   Node* getNode(int index);
-
+  std::string getsavedInput();
 
  private:
   Node* arrOfFreq[27];
+  std::string savedInput;
 };
 
 #endif

@@ -24,6 +24,7 @@ Node* minHeap::getMin(){
 void minHeap::heapify(std::string file){
   //this adds all the letters from a file into a vector with nodes of the letter and frequency
   countFreq freqTable;
+
   freqTable.addLetters(file);
   freqTable.print();
   Node* zero= new Node('?',-100);

@@ -14,21 +14,15 @@ countFreq::countFreq(){
   }
   //insert a spot for ' '
   arrOfFreq[26]=new Node(32, 0);
-
+  savedInput="";  
 }
 
 void countFreq::addLetters(std::string file){
-  freopen(file.c_str(),"r",stdin);    //read in file
-  char x;
-  while(true){
-    std::cin>>x;
-    if(std::cin.eof())
-      {
-        break;
-      }
-    if(x==32) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
+
+  for(int i=0; i<file.length();i++){
+    if(file[i] == 32) arrOfFreq[26]->setFrequency((arrOfFreq[26]->getFrequency())+1);
     else{
-      x=x-97;
+      int x=file[i]-97;
       arrOfFreq[x]->setFrequency(arrOfFreq[x]->getFrequency()+1);
     }
   }
@@ -50,4 +44,8 @@ int countFreq::getValueAt(int i){
 
 Node* countFreq::getNode(int index){
   return arrOfFreq[index];
+}
+
+std::string countFreq::getsavedInput(){
+  return savedInput;
 }

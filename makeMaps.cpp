@@ -59,3 +59,23 @@ void makeMaps::encodeHelper(Node * root) {
     encodeHelper(root->getRchild());
   }
 }
+
+std::string makeMaps::makeEncodedString(std::string input){
+  std::string result="";
+  for(int i=0; i<input.length(); i++){
+    result+=encode[input[i]];
+  } 
+  return result;
+}
+std::string makeMaps::makeDecodedString(std::string input){
+  std::string result="";
+  std::string isCode="";
+  for(int i=0; i<input.length(); i++){
+    isCode+=input[i];
+    if(decode.find(isCode) != decode.end()) {
+      result += decode[isCode];
+      isCode = "";
+    }
+  }
+  return result;
+}

@@ -14,7 +14,6 @@ countFreq::countFreq(){
   }
   //insert a spot for ' '
   arrOfFreq[26]=new Node(32, 0);
-  savedInput="";  
 }
 
 void countFreq::addLetters(std::string file){
@@ -44,8 +43,4 @@ int countFreq::getValueAt(int i){
 
 Node* countFreq::getNode(int index){
   return arrOfFreq[index];
-}
-
-std::string countFreq::getsavedInput(){
-  return savedInput;
 }

@@ -64,36 +64,50 @@ void minHeap::percolateUp() {
 
 void minHeap::percolateDown(int index) {
   while(layerabove(index)) {                                                             //layer above checks to make sure that there exists children
-    if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
-	heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
-      if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
-	swapNodes(index, 2*index);
-	index = index*2;
+    if (heap.size()%2==0 || (index*2 <= heap.size()-1 && index * 2 + 1 <= heap.size()-1)) {
+      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() && 
+          heap[index]->getFrequency() > heap[2*index + 1]->getFrequency()) {
+        if (heap[2*index]->getFrequency() < heap[2*index+1]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
+      }
+      else if(heap[index]->getFrequency() > heap[2*index]->getFrequency() ||                   //exclusive or so that it will only go through one
+            heap[index]->getFrequency() > heap[2*index+1]->getFrequency()){                                                                     //checks the condition again
+        if (heap[2*index]->getFrequency() < heap[index]->getFrequency()) {
+          swapNodes(index, 2*index);
+          index = index*2;
+        }
+        else {
+          swapNodes(index, 2*index+1);
+          index = 2*index+1;
+        }
       }
       else {
-	swapNodes(index, 2*index+1);
-	index = 2*index+1;
+        break;
       }
     }
-    if(layerabove(index)){                                                                     //checks the condition again
-      if (heap[index]->getFrequency() > heap[2*index]->getFrequency() ^                   //exclusive or so that it will only go through one
-	  heap[index]->getFrequency() > heap[2*index+1]->getFrequency()) {
-	if (heap[2*index]->getFrequency() < heap[index]->getFrequency()) {
-	  swapNodes(index, 2*index);
-	  index = index*2;
-	}
-	else {
-	  swapNodes(index, 2*index+1);
-	  index = 2*index+1;
-	}
+    else {
+      if(heap[index]->getFrequency() > heap[2*index]->getFrequency()) {
+        swapNodes(index, 2*index);
+        index = 2 * index;
+      }
+      else {
+        break;
       }
     }
-    //at the end of the while loop, if the parent is less than the children then break
-    if(layerabove(index)){
-      if(heap[index]->getFrequency()<=heap[index*2]->getFrequency()&&heap[index]->getFrequency()<=heap[index*2+1]->getFrequency())
-	break;}
   }
 }
+    //at the end of the while loop, if the parent is less than the children then break
+ //    if(layerabove(index)){
+ //      if(heap[index]->getFrequency()<=heap[index*2]->getFrequency()&&heap[index]->getFrequency()<=heap[index*2+1]->getFrequency())
+	// break;}
+ //  }
+
 
 void minHeap::swapNodes(int i, int j){
   Node* temp = new Node();

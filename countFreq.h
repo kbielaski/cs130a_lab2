@@ -14,11 +14,11 @@ class countFreq{
   void print();
   int getValueAt(int i);
   Node* getNode(int index);
-  std::string getsavedInput();
+  int checkIfInArray(char c);
 
  private:
   Node* arrOfFreq[27];
-  std::string savedInput;
+  int currentMax;
 };
 
 #endif

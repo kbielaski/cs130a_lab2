@@ -13,9 +13,11 @@ class makeMaps{
   void encodeHelper(Node * root);
   std::string makeEncodedString(std::string input);
   std::string makeDecodedString(std::string input);
+  void printTrie(Node *n);
  private:
   std::map<char, std::string> encode;
   std::map<std::string, char> decode;
+
 
 };
 #endif

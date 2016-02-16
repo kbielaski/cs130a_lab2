@@ -31,13 +31,29 @@ void makeMaps::makeEncode(std::string file){
     encoding+="0";
   }
   }*/
-
+void makeMaps::printTrie(Node *n) {
+  if (n->getLchild() != NULL) {
+    printTrie(n->getLchild());
+  }
+  if (n->getLetter() != '!')
+    std::cout << n->getLetter() << ": " << n->getFrequency() << std::endl;
+  if (n->getRchild() != NULL) {
+    printTrie(n->getRchild());
+  }
+}
 void makeMaps::makeEncode(std::string file){
   //call the constructor to make the heap using the file and then call makeOne to make the one segment then call getHoff to get the segment then call encode to make the encoding for each letter
   minHeap* heap=new minHeap(file);           //heapified the letters
+  heap->toString();
   heap->makeOne();
   Node* hoff=heap->getHoff();            //I should have the one node that has a bunch of children that I can encode
   encodeHelper(hoff);
+  for (char i = 97; i<123; i++) {
+    std::cout << i << ": " << encode[i] << std::endl;
+  }
+  char x = 32;
+  std::cout << x << ": " << encode[x] << std::endl;
+  printTrie(hoff);
 }
 
 void makeMaps::makeDecode(){          //from encode map
